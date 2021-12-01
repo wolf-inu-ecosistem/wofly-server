@@ -7,8 +7,8 @@ route.get("/", async (req, res) => {
   const aTuringRef = db.collection("usersServer").doc("aturing");
 
   await aTuringRef.set({
-    first: "Alan",
-    middle: "Mathison",
+    first: "Alan3",
+    middle: "Mathison3",
     last: "Turing",
     born: 1912,
   });
