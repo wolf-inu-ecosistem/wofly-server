@@ -3,6 +3,7 @@ import firebaseRoute from './routes/firebaseEcample.js'
 
 const app = express();
 
+
 app.use('/firebase',firebaseRoute );
 
 app.listen(3000);
