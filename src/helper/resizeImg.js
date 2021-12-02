@@ -1,23 +1,22 @@
 import sharp from "sharp";
-import fs from "fs";
 
-import uploadToFirebase from "./uploadToFirebase";
+import uploadFileToFirebase from "./firebaseUpload";
 
-async function resize(buffer, filename, size) {
-  const process = sharp(buffer);
+
+//Funcion que minimiza el tamaño , recibe el buffer de bytes, el nombre y el tamaño.
+async function resize(path, filename, size) {
+  const process = sharp(path);
 
   let resize = await process.resize( size, size, {
     fit: "cover",
     background: "transparent",
   });
 
-  const resizeImgBuffer = await resize.toBuffer();
+  resize.toBuffer()
+  .then(function(outputBuffer) {
+    uploadFileToFirebase( outputBuffer, filename )
+  });
 
-  console.log("resizeImgBuffer", resizeImgBuffer);
-
-  const bufferToImg = fs.writeFileSync(`src/resize/${filename}`, resizeImgBuffer);
-
-   return uploadToFirebase( resizeImgBuffer, filename );
 }
 
 export default resize;
