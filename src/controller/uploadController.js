@@ -13,28 +13,29 @@ const uploadController = (req, res) => {
         success: false,
         msg: "No file uploaded",
       });
-    } else {
+    } else { 
       //Si la posicion es horizontal el ancho es 400
       //Si la posicion es vertical el alto es 400
       //Si las dimenciones son iguales el tamaño es 400*400
-      let originalImage;
+
       let urlFirebase;
-      if (position == "horizontal") {
+      if (position === "horizontal") {
         urlFirebase = resize(path, `card-${originalname}`, sizeX);
         urlFirebase = resize(path, `recently-${originalname}`, sizeY);
-      } else if (position == "vertical") {
+      } else if (position === "vertical") {
         urlFirebase = resize(path, `card-${originalname}`, sizeX);
         urlFirebase = resize(path, `recently-${originalname}`, sizeY);
   
-      } else if (position == "equal") {
+      } else if (position === "equal") {
         urlFirebase = resize(path, `card-${originalname}`, sizeX);
         urlFirebase = resize(path, `recently-${originalname}`, sizeY);
       }
-  
+
       res.send({
         success: true,
-        url: urlFirebase,
+        msg: "File uploaded",
       });
+
     }
 }
 
