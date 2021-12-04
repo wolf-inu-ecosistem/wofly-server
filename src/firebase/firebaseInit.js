@@ -1,10 +1,10 @@
-import { initializeApp, applicationDefault, cert } from "firebase-admin/app";
-import { getFirestore, Timestamp, FieldValue } from "firebase-admin/firestore";
+import firebaseAdmin from "firebase-admin";
 import serviceAccount from "./key.json";
 
-const app = initializeApp({
-  credential: cert(serviceAccount),
+const admin = firebaseAdmin.initializeApp({
+  credential: firebaseAdmin.credential.cert(serviceAccount),
 });
 
+export const storageRef = admin.storage().bucket(`gs://wolfy-global.appspot.com`);
 
-export const db = getFirestore();
+
