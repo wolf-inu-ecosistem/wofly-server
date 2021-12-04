@@ -1,7 +1,7 @@
 
 import { App } from "firebase-admin/app";
 
-const storageRef = storage('gs://wolfy-global.appspot.com')
+// const storageRef = storage('gs://wolfy-global.appspot.com')
 // Add Image to Storage and return the file path
 const addImage = async ( buffer, filename ) => {
     try {
