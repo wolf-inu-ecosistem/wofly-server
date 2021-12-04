@@ -12,10 +12,11 @@ async function resize(path, filename, size) {
     background: "transparent",
   });
 
-  resize.toBuffer()
-  .then(function(outputBuffer) {
-    uploadFileToFirebase( outputBuffer, filename )
-  });
+  resize.toFile(`./src/resize/${filename}`)
+  // .toBuffer()
+  // .then(function(outputBuffer) {
+  //   uploadFileToFirebase( outputBuffer, filename )
+  // });
 
 }
 

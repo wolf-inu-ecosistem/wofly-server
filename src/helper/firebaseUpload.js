@@ -2,7 +2,6 @@ import { storageRef } from "../firebase/firebaseInit";
 
 export default async function uploadFileToFirebase( file, filename ) {
     try {
-  
       const destFileName = `uploads/${filename}`;
       const fileCloud = storageRef.file(destFileName);
       const fileUploaded = await fileCloud.save(
@@ -11,7 +10,7 @@ export default async function uploadFileToFirebase( file, filename ) {
           contentType: file.mimetype,
         },
         (err) => {
-          if(err) console.log("unexpected error ");
+          if(err) console.log(err);
         }
       );
   
